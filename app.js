@@ -15,6 +15,7 @@ const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');
 const viewRouter = require('./routes/viewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
+const cors = require('cors');
 
 // start express app
 const app = express();
@@ -27,6 +28,10 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 // global middlewares
+// implement cors
+app.use(cors());
+app.options('*', cors());
+
 // serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
