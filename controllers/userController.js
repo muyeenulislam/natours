@@ -6,7 +6,7 @@ const sharp = require('sharp');
 const catchAsync = require('../utils/catchAsync');
 const factory = require('./handlerFactory');
 
-const multerStorage = multer.memoryStorage();
+const multerStorage = multer.diskStorage();
 
 // to verify if the file is image
 const multerFilter = (req, file, cb) => {
