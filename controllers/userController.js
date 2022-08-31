@@ -10,6 +10,9 @@ const multerStorage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'public/img/users/');
   },
+  filename: (req, res, cb) => {
+    cb(null, `user-${req.user.id}-${Date.now()}.jpeg`);
+  },
 });
 
 // to verify if the file is image
