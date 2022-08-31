@@ -6,14 +6,7 @@ const sharp = require('sharp');
 const catchAsync = require('../utils/catchAsync');
 const factory = require('./handlerFactory');
 
-const multerStorage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/img/users/');
-  },
-  filename: (req, res, cb) => {
-    cb(null, `user-${req.user.id}-${Date.now()}.jpeg`);
-  },
-});
+const multerStorage = multer.memoryStorage();
 
 // to verify if the file is image
 const multerFilter = (req, file, cb) => {
